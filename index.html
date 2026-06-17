@@ -15,7 +15,7 @@
       content="Бережная онлайн-работа с самокритикой, перфекционизмом, отношениями, эмоциями, конфликтами и поиском собственных решений."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/portrait-award.jpg" />
+    <meta property="og:image" content="assets/portrait-oksana.jpg" />
     <link rel="preconnect" href="https://api.fontshare.com" />
     <link
       href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,700&f[]=satoshi@400,500,700&display=swap"
@@ -26,12 +26,20 @@
   <body>
     <a class="skip-link" href="#main">Перейти к содержанию</a>
 
+    <div class="bloom-decor" aria-hidden="true">
+      <img class="bloom-decor__sprig bloom-decor__sprig--tl" src="assets/blossom-branch.svg" alt="">
+      <img class="bloom-decor__sprig bloom-decor__sprig--tr" src="assets/blossom-branch.svg" alt="">
+      <img class="bloom-decor__sprig bloom-decor__sprig--bl" src="assets/blossom-branch.svg" alt="">
+      <img class="bloom-decor__sprig bloom-decor__sprig--br" src="assets/blossom-branch.svg" alt="">
+    </div>
+
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="Оксана Быченко, главная">
         <svg class="brand-mark" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
-          <path d="M17 3.5C9.7 3.5 4 9.1 4 16.1c0 7 5.7 12.4 13 12.4 7.2 0 13-5.4 13-12.4C30 9.1 24.2 3.5 17 3.5Z" />
-          <path d="M11.7 18.1c2.7 3.9 7.9 3.9 10.6 0M12.3 13.8c1.6-2.7 7.8-2.7 9.4 0" />
-          <path d="M17 8.6v16.8" />
+          <path d="M17 29.5C8 23.8 3.5 18.7 3.5 12.6 3.5 8.4 6.7 5.2 10.7 5.2c2.6 0 4.9 1.3 6.3 3.4 1.4-2.1 3.7-3.4 6.3-3.4 4 0 7.2 3.2 7.2 7.4 0 6.1-4.5 11.2-13.5 16.9Z" />
+          <path d="M17 8.6v16.4" />
+          <path d="M13.4 11.2c-2 .3-2.7 2-1.6 3.2-1.6.7-1.5 2.7.1 3.3-.9 1.4.2 3 1.9 2.8" />
+          <path d="M20.6 11.2c2 .3 2.7 2 1.6 3.2 1.6.7 1.5 2.7-.1 3.3.9 1.4-.2 3-1.9 2.8" />
         </svg>
         <span>Оксана Быченко</span>
       </a>
@@ -39,8 +47,9 @@
       <nav class="nav" aria-label="Основная навигация">
         <a href="#formats">Форматы</a>
         <a href="#requests">Запросы</a>
-        <a href="#videos">Видео</a>
+        <a href="#start">Как начать</a>
         <a href="#price">Прайс</a>
+        <a href="#videos">Видео</a>
         <a href="#contacts">Контакты</a>
       </nav>
 
@@ -61,10 +70,10 @@
           </p>
 
           <div class="hero__actions" aria-label="Контакты для записи">
-            <a class="button button--primary" href="https://t.me/ceriodaphnia" target="_blank" rel="noreferrer">
-              Написать в Telegram
+            <a class="button button--primary" href="#start">
+              Записаться на сессию
             </a>
-            <a class="button button--ghost" href="mailto:oksikbychenko@gmail.com">Написать на почту</a>
+            <a class="button button--ghost" href="#formats">Как идёт работа</a>
           </div>
 
           <dl class="hero__stats" aria-label="Профессиональные факты">
@@ -73,12 +82,8 @@
               <dd>часов индивидуальных сессий</dd>
             </div>
             <div>
-              <dt>6 мес.</dt>
-              <dd>практики в консультировании</dd>
-            </div>
-            <div>
-              <dt>2027</dt>
-              <dd>РАНХиГС, консультирование и коучинг</dd>
+              <dt>6+ месяцев</dt>
+              <dd>практики консультирования</dd>
             </div>
           </dl>
         </div>
@@ -86,18 +91,18 @@
         <div class="hero__media" aria-label="Фотография Оксаны Быченко">
           <figure class="portrait-card">
             <picture>
-              <source srcset="assets/portrait-award.webp" type="image/webp" />
+              <source srcset="assets/portrait-oksana.webp" type="image/webp" />
               <img
-                src="assets/portrait-award.jpg"
-                alt="Оксана Быченко с дипломом лауреата на научной конференции"
-                width="1440"
-                height="1080"
+                src="assets/portrait-oksana.jpg"
+                alt="Оксана Быченко, психолог и коуч"
+                width="640"
+                height="640"
                 fetchpriority="high"
               />
             </picture>
             <figcaption>
-              <span>научная работа</span>
-              <strong>конференции · исследования · супервизия</strong>
+              <span>Оксана Быченко</span>
+              <strong>психолог · коуч</strong>
             </figcaption>
           </figure>
         </div>
@@ -198,6 +203,19 @@
               />
             </picture>
           </figure>
+          <figure>
+            <picture>
+              <source srcset="assets/portrait-award.webp" type="image/webp" />
+              <img
+                src="assets/portrait-award.jpg"
+                alt="Оксана Быченко с дипломом лауреата на научной конференции"
+                width="1440"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </figure>
           <aside class="photo-caption">
             <p>
               Параллельно с практикой я посещаю конференции, пишу научные работы по психологии и работаю под регулярным
@@ -285,45 +303,98 @@
         </div>
       </section>
 
-      <section class="section section--reviews" id="reviews" aria-labelledby="reviews-title">
-        <div class="reviews-card">
-          <div class="reviews-card__intro">
-            <p class="eyebrow">социальное подтверждение</p>
-            <h2 id="reviews-title">Отзывы на Авито</h2>
+      <section class="section section--start" id="start" aria-labelledby="start-title">
+        <div class="section__header">
+          <p class="eyebrow">как мы начнём</p>
+          <h2 id="start-title">Три спокойных шага до первой сессии</h2>
+          <p>
+            Не нужно готовиться или формулировать запрос идеально. Достаточно написать первое сообщение —
+            остальное мы пройдём вместе.
+          </p>
+        </div>
+
+        <ol class="start-steps">
+          <li class="start-step">
+            <span class="start-step__index">01</span>
+            <h3>Напишите мне</h3>
             <p>
-              Клиенты отмечают комфортную атмосферу, поддержку, эмпатичность и бережный переход к сути запроса.
+              Отправьте короткое сообщение в удобном канале. Можно в паре фраз описать, что
+              сейчас важно, или просто написать «хочу записаться».
+            </p>
+          </li>
+          <li class="start-step">
+            <span class="start-step__index">02</span>
+            <h3>Подберём формат и время</h3>
+            <p>
+              Я отвечу и помогу сориентироваться: консультация или коуч-сессия подойдёт лучше, и
+              подберём удобное время для онлайн-встречи.
+            </p>
+          </li>
+          <li class="start-step">
+            <span class="start-step__index">03</span>
+            <h3>Первая онлайн-сессия</h3>
+            <p>
+              Встречаемся онлайн в спокойном темпе. Без давления и ожиданий — начинаем там, где
+              вам комфортно.
+            </p>
+          </li>
+        </ol>
+
+        <div class="start-cta">
+          <p>Готовы сделать первый шаг? Напишите мне — я отвечу лично.</p>
+          <div class="start-cta__actions">
+            <a class="button button--primary" href="https://t.me/ceriodaphnia" target="_blank" rel="noreferrer">
+              Написать в Telegram
+            </a>
+            <a class="button button--ghost" href="#contacts">Другие способы связи</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="price" aria-labelledby="price-title">
+        <div class="section__header">
+          <p class="eyebrow">прайс-лист</p>
+          <h2 id="price-title">Стоимость онлайн-сессий</h2>
+        </div>
+
+        <div class="price-grid">
+          <article class="price-card">
+            <div>
+              <h3>Консультация психолога</h3>
+              <p>Для бережного исследования состояния, отношений, эмоций, самокритики и внутренних трудностей.</p>
+            </div>
+            <strong>1 750 ₽</strong>
+          </article>
+          <article class="price-card price-card--accent">
+            <div>
+              <h3>Коуч-сессия</h3>
+              <p>Для прояснения цели, выбора стратегии, поиска опор и следующих шагов.</p>
+            </div>
+            <strong>1 750 ₽</strong>
+          </article>
+        </div>
+        <p class="price-note">
+          Формат — онлайн. Если вы не уверены, какой формат подходит, можно написать мне кратко о запросе, и я помогу
+          сориентироваться.
+        </p>
+      </section>
+
+      <section class="section section--education" aria-labelledby="education-title">
+        <div class="education">
+          <div>
+            <p class="eyebrow">образование и подход</p>
+            <h2 id="education-title">Профессию осваиваю системно и бережно</h2>
+            <p>
+              Я не позиционирую себя как эксперта с многолетним стажем — и считаю честность
+              здесь важной. Но за моей работой стоит настоящая профессиональная опора:
+              академическое образование, более 100 часов практики, постоянная супервизия и
+              научный подход к психологии и консультированию. Я внимательна, вовлечена и
+              бережна — и именно это часто отмечают те, с кем я работаю.
             </p>
           </div>
-
-          <div class="reviews-card__shots" aria-label="Отзывы на Авито">
-            <article class="avito-review avito-review--large">
-              <div class="avito-review__head">
-                <span class="avito-review__avatar" aria-hidden="true">Ю</span>
-                <div>
-                  <h3>Юлия</h3>
-                  <p>25 марта · Клиент</p>
-                </div>
-              </div>
-              <div class="avito-review__meta">
-                <span aria-label="Оценка 5 из 5">★★★★★</span>
-                <p>Сделка состоялась · Психологическое консультирование</p>
-              </div>
-              <p class="avito-review__text">
-                Все замечательно, комфортная атмосфера, профессионализм и поддержка. После сессий с Оксаной
-                почувствовала положительную динамику и нашла решение вопроса, с которым обратилась, спасибо!
-              </p>
-            </article>
-
-            <article class="avito-review">
-              <div class="avito-review__meta">
-                <span aria-label="Оценка 5 из 5">★★★★★</span>
-                <p>Сделка состоялась · Психолог-практикант</p>
-              </div>
-              <p class="avito-review__text">
-                Оксана очень эмпатичная и тёплая, помогает перейти к сути решения проблемы. Помогла мне увидеть свои
-                сильные стороны. Рада, что нашла её!
-              </p>
-            </article>
+          <div class="education__seal" aria-hidden="true">
+            <span>РАНХиГС</span>
+            <strong>2027</strong>
           </div>
         </div>
       </section>
@@ -391,50 +462,6 @@
         </a>
       </section>
 
-      <section class="section section--education" aria-labelledby="education-title">
-        <div class="education">
-          <div>
-            <p class="eyebrow">образование</p>
-            <h2 id="education-title">Психологическое консультирование и коучинг</h2>
-            <p>
-              РАНХиГС — Российская академия народного хозяйства и государственной службы при Президенте Российской
-              Федерации. Окончание программы — 2027 год.
-            </p>
-          </div>
-          <div class="education__seal" aria-hidden="true">
-            <span>РАНХиГС</span>
-            <strong>2027</strong>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="price" aria-labelledby="price-title">
-        <div class="section__header">
-          <p class="eyebrow">прайс-лист</p>
-          <h2 id="price-title">Стоимость онлайн-сессий</h2>
-        </div>
-
-        <div class="price-grid">
-          <article class="price-card">
-            <div>
-              <h3>Консультация психолога</h3>
-              <p>Для бережного исследования состояния, отношений, эмоций, самокритики и внутренних трудностей.</p>
-            </div>
-            <strong>1 750 ₽</strong>
-          </article>
-          <article class="price-card price-card--accent">
-            <div>
-              <h3>Коуч-сессия</h3>
-              <p>Для прояснения цели, выбора стратегии, поиска опор и следующих шагов.</p>
-            </div>
-            <strong>1 750 ₽</strong>
-          </article>
-        </div>
-        <p class="price-note">
-          Формат — онлайн. Если вы не уверены, какой формат подходит, можно написать мне кратко о запросе, и я помогу
-          сориентироваться.
-        </p>
-      </section>
 
       <section class="section section--contact" id="contacts" aria-labelledby="contacts-title">
         <div class="contact-card">
@@ -474,8 +501,7 @@
       <p>Психологическое консультирование и коучинг онлайн</p>
     </footer>
 
-    <script src="script.js" defer></script>
-  <script data-pplx-inline-edit>
+    <script src="script.js" defer></script><script data-pplx-inline-edit>
 (function () {
   if (window === window.top) return;
 
@@ -752,7 +778,7 @@
         `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
         '<foreignObject width="100%" height="100%">' +
         `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
-        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
         html +
         "</div></div></foreignObject></svg>";
       const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;

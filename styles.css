@@ -89,49 +89,79 @@ html {
 }
 
 body {
-  position: relative;
   min-height: 100dvh;
-  overflow-x: clip;
   line-height: 1.6;
   font-family: var(--font-body);
   font-size: var(--text-base);
   color: var(--color-text);
   background:
     radial-gradient(circle at 0 0, color-mix(in oklab, var(--color-rose) 35%, transparent), transparent 32rem),
+    radial-gradient(circle at 100% 22%, color-mix(in oklab, var(--color-rose) 26%, transparent), transparent 30rem),
+    radial-gradient(circle at 8% 64%, color-mix(in oklab, var(--color-sage) 24%, transparent), transparent 34rem),
+    radial-gradient(circle at 92% 88%, color-mix(in oklab, var(--color-rose) 22%, transparent), transparent 32rem),
     linear-gradient(135deg, var(--color-bg), var(--color-surface) 62%, var(--color-primary-soft));
+  background-attachment: fixed;
 }
 
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  pointer-events: none;
-  z-index: 0;
-  width: clamp(220px, 28vw, 420px);
-  aspect-ratio: 2 / 3;
-  opacity: 0.45;
-  filter: saturate(1.08);
-  background: url('assets/floral-branches.svg') center / contain no-repeat;
+#main {
+  position: relative;
+  z-index: 1;
 }
 
-body::before {
-  top: 8.5rem;
-  right: max(-4rem, -4vw);
-  transform: rotate(-7deg);
-}
-
-body::after {
-  bottom: 7rem;
-  left: max(-5rem, -5vw);
-  opacity: 0.31;
-  transform: scaleX(-1) rotate(10deg);
-}
-
-.site-header,
-main,
 .site-footer {
   position: relative;
   z-index: 1;
+}
+
+.bloom-decor {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bloom-decor__sprig {
+  position: absolute;
+  width: clamp(140px, 16vw, 240px);
+  height: auto;
+  background: none;
+  opacity: 0.5;
+  filter: saturate(0.92);
+}
+
+.bloom-decor__sprig--tl {
+  top: -14px;
+  left: -18px;
+  transform: rotate(186deg);
+}
+
+.bloom-decor__sprig--tr {
+  top: -10px;
+  right: -24px;
+  transform: scaleX(-1) rotate(190deg);
+}
+
+.bloom-decor__sprig--bl {
+  bottom: -20px;
+  left: -26px;
+  transform: scaleX(-1) rotate(4deg);
+}
+
+.bloom-decor__sprig--br {
+  bottom: -16px;
+  right: -20px;
+  transform: rotate(2deg);
+}
+
+@media (max-width: 720px) {
+  .bloom-decor__sprig--tr,
+  .bloom-decor__sprig--bl {
+    display: none;
+  }
+  .bloom-decor__sprig {
+    opacity: 0.38;
+  }
 }
 
 img,
@@ -273,7 +303,6 @@ li {
 }
 
 .hero {
-  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.06fr) minmax(320px, 0.94fr);
   gap: clamp(var(--space-8), 5vw, var(--space-20));
@@ -282,12 +311,6 @@ li {
   min-height: calc(100dvh - 92px);
   margin-inline: auto;
   padding-block: clamp(var(--space-10), 7vw, var(--space-24));
-}
-
-.hero__content,
-.hero__media {
-  position: relative;
-  z-index: 2;
 }
 
 .eyebrow {
@@ -509,7 +532,7 @@ li {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) minmax(250px, 0.48fr);
   gap: clamp(var(--space-5), 4vw, var(--space-10));
-  align-items: center;
+  align-items: start;
   padding: clamp(var(--space-6), 5vw, var(--space-12));
   border: 1px solid color-mix(in oklab, var(--color-rose-strong) 24%, var(--color-border));
   border-radius: var(--radius-xl);
@@ -637,7 +660,7 @@ li {
 }
 
 .photo-grid__large {
-  grid-row: span 2;
+  grid-row: span 3;
 }
 
 .photo-grid img {
@@ -654,8 +677,8 @@ li {
 
 .photo-caption {
   display: flex;
-  align-items: end;
-  padding: var(--space-6);
+  align-items: center;
+  padding: clamp(var(--space-6), 3vw, var(--space-8));
   color: var(--color-surface);
   background: var(--color-primary);
 }
@@ -752,127 +775,6 @@ li {
   color: var(--color-text-muted);
   font-size: var(--text-sm);
   font-weight: 400;
-  line-height: 1.45;
-}
-
-.section--reviews {
-  padding-block: clamp(var(--space-8), 6vw, var(--space-16));
-}
-
-.reviews-card {
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1fr);
-  gap: clamp(var(--space-6), 5vw, var(--space-12));
-  align-items: center;
-  padding: clamp(var(--space-6), 5vw, var(--space-12));
-  border: 1px solid color-mix(in oklab, var(--color-primary) 18%, var(--color-border));
-  border-radius: var(--radius-xl);
-  background:
-    radial-gradient(circle at 4% 0, color-mix(in oklab, var(--color-rose) 38%, transparent), transparent 18rem),
-    linear-gradient(135deg, color-mix(in oklab, var(--color-primary-soft) 62%, transparent), transparent 58%),
-    var(--color-surface);
-  box-shadow: 0 24px 76px rgb(var(--color-shadow) / 0.1);
-}
-
-.reviews-card::after {
-  content: '';
-  position: absolute;
-  right: clamp(var(--space-5), 5vw, var(--space-12));
-  top: clamp(var(--space-5), 5vw, var(--space-10));
-  width: clamp(72px, 9vw, 124px);
-  aspect-ratio: 1;
-  border: 1px solid color-mix(in oklab, var(--color-rose-strong) 24%, transparent);
-  border-radius: 50%;
-  opacity: 0.62;
-}
-
-.reviews-card__intro {
-  position: relative;
-  z-index: 1;
-}
-
-.reviews-card__intro h2 {
-  font-size: clamp(2rem, 4.5vw, 4rem);
-  letter-spacing: -0.045em;
-}
-
-.reviews-card__intro p:not(.eyebrow) {
-  margin-top: var(--space-4);
-  color: var(--color-text-muted);
-}
-
-.reviews-card__shots {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: var(--space-4);
-}
-
-.avito-review {
-  display: grid;
-  gap: var(--space-3);
-  padding: clamp(var(--space-4), 3vw, var(--space-5));
-  border: 1px solid color-mix(in oklab, var(--color-border) 78%, var(--color-surface));
-  border-radius: var(--radius-lg);
-  background: #ffffff;
-  box-shadow: 0 16px 40px rgb(var(--color-shadow) / 0.08);
-}
-
-.avito-review--large {
-  margin-right: clamp(var(--space-4), 5vw, var(--space-12));
-}
-
-.avito-review:not(.avito-review--large) {
-  margin-left: clamp(var(--space-4), 5vw, var(--space-12));
-}
-
-.avito-review__head,
-.avito-review__meta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.avito-review__avatar {
-  width: 2.35rem;
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #ffd400;
-  color: #ffffff;
-  font-weight: 800;
-}
-
-.avito-review h3 {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  line-height: 1.2;
-}
-
-.avito-review__head p,
-.avito-review__meta p {
-  color: #6d6d6d;
-  font-size: var(--text-xs);
-  line-height: 1.25;
-}
-
-.avito-review__meta {
-  flex-wrap: wrap;
-}
-
-.avito-review__meta span {
-  color: #ffb800;
-  font-size: var(--text-sm);
-  letter-spacing: 0.03em;
-  line-height: 1;
-}
-
-.avito-review__text {
-  color: #1f1f1f;
-  font-size: var(--text-sm);
   line-height: 1.45;
 }
 
@@ -1004,12 +906,16 @@ li {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--space-6);
-  align-items: end;
+  align-items: center;
   min-height: 230px;
   padding: clamp(var(--space-6), 4vw, var(--space-8));
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   background: var(--color-surface);
+}
+
+.price-card > div {
+  align-self: start;
 }
 
 .price-card--accent {
@@ -1036,6 +942,109 @@ li {
 .price-note {
   margin-top: var(--space-5);
   color: var(--color-text-muted);
+}
+
+.section--start {
+  padding-bottom: clamp(var(--space-8), 6vw, var(--space-16));
+}
+
+.start-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  align-items: stretch;
+  list-style: none;
+  counter-reset: start-step;
+}
+
+.start-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: clamp(var(--space-5), 3vw, var(--space-8));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: color-mix(in oklab, var(--color-surface) 84%, transparent);
+  box-shadow: 0 12px 38px rgb(var(--color-shadow) / 0.06);
+}
+
+.start-step:nth-child(2) {
+  background:
+    linear-gradient(145deg, color-mix(in oklab, var(--color-primary-soft) 58%, transparent), transparent 70%),
+    var(--color-surface);
+}
+
+.start-step:nth-child(3) {
+  background:
+    linear-gradient(145deg, color-mix(in oklab, var(--color-rose) 32%, transparent), transparent 72%),
+    var(--color-surface);
+}
+
+.start-step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  top: 50%;
+  right: calc(var(--space-5) / -2 - 0.55rem);
+  transform: translateY(-50%);
+  z-index: 1;
+  color: var(--color-primary);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.start-step__index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+
+.start-step h3 {
+  font-size: var(--text-lg);
+}
+
+.start-step p {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.start-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-8);
+  padding: clamp(var(--space-5), 4vw, var(--space-8));
+  border: 1px solid color-mix(in oklab, var(--color-primary) 22%, var(--color-border));
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 100% 0, color-mix(in oklab, var(--color-rose) 30%, transparent), transparent 16rem),
+    color-mix(in oklab, var(--color-primary-soft) 50%, var(--color-surface));
+}
+
+.start-cta p {
+  max-width: 40ch;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.start-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
 }
 
 .section--contact {
@@ -1133,7 +1142,6 @@ li {
   .intro-card,
   .principle-card,
   .section__header--split,
-  .reviews-card,
   .education,
   .contact-card {
     grid-template-columns: 1fr;
@@ -1177,11 +1185,6 @@ li {
     grid-template-columns: 1fr;
   }
 
-  .avito-review--large,
-  .avito-review:not(.avito-review--large) {
-    margin-inline: 0;
-  }
-
   .principle-card__tags {
     max-width: 620px;
   }
@@ -1199,6 +1202,23 @@ li {
 
   .video-card--raised {
     margin-top: 0;
+  }
+
+  .start-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .start-step:not(:last-child)::after {
+    content: '↓';
+    top: auto;
+    right: 50%;
+    bottom: calc(var(--space-5) / -2 - 0.55rem);
+    transform: translateX(50%);
+  }
+
+  .start-cta {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -1283,15 +1303,10 @@ li {
   .principle-card,
   .format-card,
   .request-group,
-  .reviews-card,
   .education,
   .contact-card {
     padding: var(--space-5);
     border-radius: var(--radius-lg);
-  }
-
-  .reviews-card__intro h2 {
-    font-size: clamp(2rem, 12vw, 3.2rem);
   }
 
   .principle-card {
