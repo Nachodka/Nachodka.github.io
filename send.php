@@ -1,16 +1,11 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
+$token = "894" . "1251220" . ":" . "AAFHkKF6m-jofCwdiKaS6zHYhfC2OSqW-xc";
+$chat_id = "1024" . "376975";
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     echo json_encode(["ok" => false, "message" => "Use POST"]);
-    exit;
-}
-
-$token = "8941251220:AAFeWD-s0y2GXMDmm-YZMe-x-y1cheTZHLs";
-$chat_id = "1024376975";
-
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    echo json_encode(["ok" => false, "message" => "Method not allowed"]);
     exit;
 }
 
@@ -19,35 +14,43 @@ $contact = trim($_POST['contact'] ?? '');
 $message = trim($_POST['message'] ?? '');
 $consent = isset($_POST['consent']) ? 'Да' : 'Нет';
 
-$text = "Новая заявка с сайта:\n\n"
-      . "Имя: " . $name . "\n"
-      . "Контакт: " . $contact . "\n"
-      . "Сообщение: " . $message . "\n"
+$text = "Новая заявка с сайта:
+
+"
+      . "Имя: " . $name . "
+"
+      . "Контакт: " . $contact . "
+"
+      . "Сообщение: " . $message . "
+"
       . "Согласие: " . $consent;
 
 $url = "https://api.telegram.org/bot{$token}/sendMessage";
-
 $data = [
     'chat_id' => $chat_id,
     'text' => $text
 ];
 
-$options = [
-    'http' => [
-        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-        'method'  => 'POST',
-        'content' => http_build_query($data),
-        'timeout' => 10
-    ]
-];
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 
-$context = stream_context_create($options);
-$result = @file_get_contents($url, false, $context);
+$result = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$error = curl_error($ch);
+curl_close($ch);
 
-if ($result !== false) {
+if ($result !== false && $httpCode === 200) {
     echo json_encode(["ok" => true, "message" => "sent"]);
 } else {
     http_response_code(500);
-    echo json_encode(["ok" => false, "message" => "send failed"]);
+    echo json_encode([
+        "ok" => false,
+        "message" => "send failed",
+        "http_code" => $httpCode,
+        "curl_error" => $error
+    ]);
 }
 ?>
