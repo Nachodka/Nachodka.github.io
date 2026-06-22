@@ -20,10 +20,10 @@ $text = "Новая заявка с сайта:\n\n"
       . "Сообщение: " . $message . "\n"
       . "Согласие: " . $consent;
 
-$url = "https://api.telegram.org/bot{$token}/sendMessage";
+$url = "https://api.telegram.org/bot{$8941251220:AAFeWD-s0y2GXMDmm-YZMe-x-y1cheTZHLs}/sendMessage";
 
 $data = [
-    'chat_id' => $chat_id,
+    'chat_id' => $1024376975,
     'text' => $text
 ];
 
