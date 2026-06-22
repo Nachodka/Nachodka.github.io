@@ -1557,3 +1557,26 @@ li {
 .contact-form-status.is-error {
   color: #ad686d;
 }
+.hero__lead {
+  display: none;
+}
+
+.contact-form-card {
+  grid-column: 1 / -1;
+  width: min(100%, 680px);
+  margin: var(--space-8) auto 0;
+}
+
+.contact-form-intro,
+.contact-form-status {
+  text-align: center;
+}
+
+.contact-form-button {
+  align-self: center;
+}
+
+.contact-form {
+  display: grid;
+  gap: var(--space-4);
+}
