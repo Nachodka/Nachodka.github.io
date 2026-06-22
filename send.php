@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
-$token = "894" . "1251220" . ":" . "AAFHkKF6m-jofCwdiKaS6zHYhfC2OSqW-xc";
+$token = "894" . "1251220" . ":" . "AAFeWD-s0y2GXMDmm-YZMe-x-y1cheTZHLs";
 $chat_id = "1024" . "376975";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
