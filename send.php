@@ -25,7 +25,7 @@ $text = "Новая заявка с сайта:
 "
       . "Согласие: " . $consent;
 
-$url = "https://api.telegram.org/bot{$token}/sendMessage";
+$url = "https://api.telegram.org/bot{8941251220:AAFHkKF6m-jofCwdiKaS6zHYhfC2OSqW-xc}/sendMessage";
 
 $data = [
     'chat_id' => $chat_id,
