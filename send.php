@@ -2,7 +2,8 @@
 header('Content-Type: application/json; charset=utf-8');
 
 $token = "8941251220:AAFHkKF6m-jofCwdiKaS6zHYhfC2OSqW-xc";
-$chat_id = "1024376975";
+$chat_id = "$token = "8941251220:AAFeWD-s0y2GXMDmm-YZMe-x-y1cheTZHLs";
+$chat_id = "1024376975";";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     echo json_encode(["ok" => false, "message" => "Method not allowed"]);
