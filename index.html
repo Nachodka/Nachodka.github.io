@@ -730,6 +730,40 @@ if (contactForm && contactStatus) {
     }
   });
 }
+<script>
+const contactForm = document.getElementById('contact-form');
+const contactStatus = document.getElementById('contact-form-status');
+
+if (contactForm && contactStatus) {
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    contactStatus.textContent = '';
+    contactStatus.classList.remove('is-success', 'is-error');
+
+    try {
+      const response = await fetch('send.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.ok) {
+        contactStatus.textContent = 'Я вам перезвоню в ближайшее время.';
+        contactStatus.classList.add('is-success');
+        contactForm.reset();
+      } else {
+        contactStatus.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз.';
+        contactStatus.classList.add('is-error');
+      }
+    } catch (error) {
+      contactStatus.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз.';
+      contactStatus.classList.add('is-error');
+    }
+  });
+}
 </script>
 
 </body>
