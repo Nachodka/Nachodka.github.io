@@ -1,6 +1,11 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    echo json_encode(["ok" => false, "message" => "Use POST"]);
+    exit;
+}
+
 $token = "8941251220:AAFeWD-s0y2GXMDmm-YZMe-x-y1cheTZHLs";
 $chat_id = "1024376975";
 
@@ -20,10 +25,10 @@ $text = "Новая заявка с сайта:\n\n"
       . "Сообщение: " . $message . "\n"
       . "Согласие: " . $consent;
 
-$url = "https://api.telegram.org/bot{8941251220:AAFeWD-s0y2GXMDmm-YZMe-x-y1cheTZHLs}/sendMessage";
+$url = "https://api.telegram.org/bot{$token}/sendMessage";
 
 $data = [
-    'chat_id' => 1024376975,
+    'chat_id' => $chat_id,
     'text' => $text
 ];
 
