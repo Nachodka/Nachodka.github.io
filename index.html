@@ -764,7 +764,37 @@ if (contactForm && contactStatus) {
     }
   });
 }
-</script>
+<script>
+const contactForm = document.getElementById('contact-form');
+const contactStatus = document.getElementById('contact-form-status');
+
+if (contactForm && contactStatus) {
+  contactForm.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    contactStatus.textContent = '';
+
+    try {
+      const response = await fetch('send.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.ok) {
+        contactStatus.textContent = 'Я вам перезвоню в ближайшее время.';
+        contactForm.reset();
+      } else {
+        contactStatus.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз.';
+      }
+    } catch (e) {
+      contactStatus.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз.';
+    }
+  });
+}
+
 
 </body>
 </html>
