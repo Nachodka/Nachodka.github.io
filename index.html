@@ -417,6 +417,32 @@
 </footer>
 <script defer="" src="script.js"></script>
 <script>
+const telegramBot = {
+  token: '8941251220:AAFeWD-s0y2GXMDmm-YZMe-x-y1cheTZHLs',
+  chatId: '1024376975'
+};
+
+function sendToTelegram(fields) {
+  const text = [
+    'New request from the website:',
+    '',
+    'Name: ' + fields.name,
+    'Contact: ' + fields.contact,
+    'Message: ' + fields.message,
+    'Consent: Yes'
+  ].join('\n');
+
+  const body = new URLSearchParams();
+  body.set('chat_id', telegramBot.chatId);
+  body.set('text', text);
+
+  return fetch('https://api.telegram.org/bot' + telegramBot.token + '/sendMessage', {
+    method: 'POST',
+    mode: 'no-cors',
+    body: body
+  });
+}
+
 function bindContactForm(form, statusEl) {
   if (!form || !statusEl) return;
 
@@ -424,34 +450,23 @@ function bindContactForm(form, statusEl) {
     event.preventDefault();
     statusEl.textContent = '';
     statusEl.classList.remove('is-success', 'is-error');
+    const submitButton = form.querySelector('[type="submit"]');
+    if (submitButton) submitButton.disabled = true;
 
     try {
-      const response = await fetch('https://functions.yandexcloud.net/d4ef2345mvena5dj0q7n', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: form.name.value,
-          contact: form.contact.value,
-          message: form.message.value,
-          consent: true
-        })
+      await sendToTelegram({
+        name: form.elements.name.value.trim(),
+        contact: form.elements.contact.value.trim(),
+        message: form.elements.message.value.trim()
       });
-
-      const data = await response.json();
-
-      if (response.ok && data.ok) {
-        statusEl.textContent = 'I’ll reply using your preferred contact method.';
-        statusEl.classList.add('is-success');
-        form.reset();
-      } else {
-        statusEl.textContent = 'Could not send your message. Please try again.';
-        statusEl.classList.add('is-error');
-      }
+      statusEl.textContent = 'I’ll reply using your preferred contact method.';
+      statusEl.classList.add('is-success');
+      form.reset();
     } catch (error) {
       statusEl.textContent = 'Could not send your message. Please try again.';
       statusEl.classList.add('is-error');
+    } finally {
+      if (submitButton) submitButton.disabled = false;
     }
   });
 }
